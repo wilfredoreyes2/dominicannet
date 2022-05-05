@@ -1,0 +1,686 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="db_a86807_dominicannetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="empresas">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_empresa" Type="varchar" MaxLength="50" />
+          <Property Name="descricion" Type="varchar" MaxLength="200" />
+          <Property Name="modelo_negocio" Type="varchar" MaxLength="100" />
+          <Property Name="invercion" Type="int" />
+          <Property Name="porcentaje_participacion" Type="int" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="invercionista_socio">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_usuario" Type="int" />
+          <Property Name="porsentaje" Type="int" />
+          <Property Name="inversion" Type="int" />
+          <Property Name="descripcion" Type="varchar" MaxLength="200" />
+          <Property Name="ID_proyecto" Type="int" />
+        </EntityType>
+        <EntityType Name="ofertantes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="int" />
+          <Property Name="porcentaje" Type="int" />
+          <Property Name="inversion" Type="int" />
+          <Property Name="descripcion" Type="int" />
+          <Property Name="ID_PROYECTO" Type="int" />
+        </EntityType>
+        <EntityType Name="proyectos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="NOMBRE_PROYECTO" Type="varchar" MaxLength="100" />
+          <Property Name="descripcion" Type="varchar" MaxLength="500" />
+          <Property Name="modelo_negocio" Type="varchar" MaxLength="200" />
+          <Property Name="invercion_necesaria" Type="int" />
+          <Property Name="porcentaje_ofertado" Type="int" />
+          <Property Name="id_usuario" Type="int" />
+          <Property Name="link_video" Type="varchar" MaxLength="150" />
+          <Property Name="imagen" Type="image" />
+        </EntityType>
+        <EntityType Name="REPORTE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_ususario" Type="int" />
+          <Property Name="ID_empresa" Type="int" />
+          <Property Name="ID_PROYECTO" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="correo" Type="varchar" MaxLength="50" />
+          <Property Name="contraseña" Type="varchar" MaxLength="50" />
+          <Property Name="rol" Type="int" />
+          <Property Name="actividad" Type="int" />
+          <Property Name="estado" Type="int" />
+          <Property Name="telefono" Type="int" />
+          <Property Name="pagina_web" Type="int" />
+          <Property Name="instagram" Type="int" />
+        </EntityType>
+        <EntityType Name="vacantes_empresas">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vacante" Type="varchar" MaxLength="250" />
+          <Property Name="descrpicion" Type="varchar" MaxLength="500" />
+          <Property Name="puesto" Type="varchar" MaxLength="50" />
+          <Property Name="horario" Type="varchar" MaxLength="15" />
+          <Property Name="salario" Type="int" />
+          <Property Name="ID_EMPRESA" Type="int" />
+          <Property Name="Contacto" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_empresas_usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="empresas" Type="Self.empresas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="empresas">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_invercionista_socio_proyectos">
+          <End Role="proyectos" Type="Self.proyectos" Multiplicity="0..1" />
+          <End Role="invercionista_socio" Type="Self.invercionista_socio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proyectos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="invercionista_socio">
+              <PropertyRef Name="ID_proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_invercionista_socio_usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="0..1" />
+          <End Role="invercionista_socio" Type="Self.invercionista_socio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="invercionista_socio">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ofertantes_proyectos">
+          <End Role="proyectos" Type="Self.proyectos" Multiplicity="0..1" />
+          <End Role="ofertantes" Type="Self.ofertantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proyectos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ofertantes">
+              <PropertyRef Name="ID_PROYECTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ofertantes_usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="0..1" />
+          <End Role="ofertantes" Type="Self.ofertantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ofertantes">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_proyectos_usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="0..1" />
+          <End Role="proyectos" Type="Self.proyectos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="proyectos">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vacantes_empresas_empresas">
+          <End Role="empresas" Type="Self.empresas" Multiplicity="0..1" />
+          <End Role="vacantes_empresas" Type="Self.vacantes_empresas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empresas">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="vacantes_empresas">
+              <PropertyRef Name="ID_EMPRESA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="db_a86807_dominicannetModelStoreContainer">
+          <EntitySet Name="empresas" EntityType="Self.empresas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="invercionista_socio" EntityType="Self.invercionista_socio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ofertantes" EntityType="Self.ofertantes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="proyectos" EntityType="Self.proyectos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="REPORTE" EntityType="Self.REPORTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vacantes_empresas" EntityType="Self.vacantes_empresas" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_empresas_usuarios" Association="Self.FK_empresas_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="empresas" EntitySet="empresas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_invercionista_socio_proyectos" Association="Self.FK_invercionista_socio_proyectos">
+            <End Role="proyectos" EntitySet="proyectos" />
+            <End Role="invercionista_socio" EntitySet="invercionista_socio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_invercionista_socio_usuarios" Association="Self.FK_invercionista_socio_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="invercionista_socio" EntitySet="invercionista_socio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ofertantes_proyectos" Association="Self.FK_ofertantes_proyectos">
+            <End Role="proyectos" EntitySet="proyectos" />
+            <End Role="ofertantes" EntitySet="ofertantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ofertantes_usuarios" Association="Self.FK_ofertantes_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="ofertantes" EntitySet="ofertantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_proyectos_usuarios" Association="Self.FK_proyectos_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="proyectos" EntitySet="proyectos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vacantes_empresas_empresas" Association="Self.FK_vacantes_empresas_empresas">
+            <End Role="empresas" EntitySet="empresas" />
+            <End Role="vacantes_empresas" EntitySet="vacantes_empresas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="db_a86807_dominicannetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="empresas">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_empresa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descricion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="modelo_negocio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="invercion" Type="Int32" />
+          <Property Name="porcentaje_participacion" Type="Int32" />
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="usuarios" Relationship="Self.FK_empresas_usuarios" FromRole="empresas" ToRole="usuarios" />
+          <NavigationProperty Name="vacantes_empresas" Relationship="Self.FK_vacantes_empresas_empresas" FromRole="empresas" ToRole="vacantes_empresas" />
+        </EntityType>
+        <EntityType Name="invercionista_socio">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_usuario" Type="Int32" />
+          <Property Name="porsentaje" Type="Int32" />
+          <Property Name="inversion" Type="Int32" />
+          <Property Name="descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ID_proyecto" Type="Int32" />
+          <NavigationProperty Name="proyectos" Relationship="Self.FK_invercionista_socio_proyectos" FromRole="invercionista_socio" ToRole="proyectos" />
+          <NavigationProperty Name="usuarios" Relationship="Self.FK_invercionista_socio_usuarios" FromRole="invercionista_socio" ToRole="usuarios" />
+        </EntityType>
+        <EntityType Name="ofertantes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_USUARIO" Type="Int32" />
+          <Property Name="porcentaje" Type="Int32" />
+          <Property Name="inversion" Type="Int32" />
+          <Property Name="descripcion" Type="Int32" />
+          <Property Name="ID_PROYECTO" Type="Int32" />
+          <NavigationProperty Name="proyectos" Relationship="Self.FK_ofertantes_proyectos" FromRole="ofertantes" ToRole="proyectos" />
+          <NavigationProperty Name="usuarios" Relationship="Self.FK_ofertantes_usuarios" FromRole="ofertantes" ToRole="usuarios" />
+        </EntityType>
+        <EntityType Name="proyectos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="NOMBRE_PROYECTO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="modelo_negocio" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="invercion_necesaria" Type="Int32" />
+          <Property Name="porcentaje_ofertado" Type="Int32" />
+          <Property Name="id_usuario" Type="Int32" />
+          <Property Name="link_video" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="invercionista_socio" Relationship="Self.FK_invercionista_socio_proyectos" FromRole="proyectos" ToRole="invercionista_socio" />
+          <NavigationProperty Name="ofertantes" Relationship="Self.FK_ofertantes_proyectos" FromRole="proyectos" ToRole="ofertantes" />
+          <NavigationProperty Name="usuarios" Relationship="Self.FK_proyectos_usuarios" FromRole="proyectos" ToRole="usuarios" />
+        </EntityType>
+        <EntityType Name="REPORTE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_ususario" Type="Int32" />
+          <Property Name="ID_empresa" Type="Int32" />
+          <Property Name="ID_PROYECTO" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="contraseña" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rol" Type="Int32" />
+          <Property Name="actividad" Type="Int32" />
+          <Property Name="estado" Type="Int32" />
+          <Property Name="telefono" Type="Int32" />
+          <Property Name="pagina_web" Type="Int32" />
+          <Property Name="instagram" Type="Int32" />
+          <NavigationProperty Name="empresas" Relationship="Self.FK_empresas_usuarios" FromRole="usuarios" ToRole="empresas" />
+          <NavigationProperty Name="invercionista_socio" Relationship="Self.FK_invercionista_socio_usuarios" FromRole="usuarios" ToRole="invercionista_socio" />
+          <NavigationProperty Name="ofertantes" Relationship="Self.FK_ofertantes_usuarios" FromRole="usuarios" ToRole="ofertantes" />
+          <NavigationProperty Name="proyectos" Relationship="Self.FK_proyectos_usuarios" FromRole="usuarios" ToRole="proyectos" />
+        </EntityType>
+        <EntityType Name="vacantes_empresas">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vacante" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="descrpicion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="puesto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="horario" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="salario" Type="Int32" />
+          <Property Name="ID_EMPRESA" Type="Int32" />
+          <Property Name="Contacto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="empresas" Relationship="Self.FK_vacantes_empresas_empresas" FromRole="vacantes_empresas" ToRole="empresas" />
+        </EntityType>
+        <Association Name="FK_empresas_usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="empresas" Type="Self.empresas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="empresas">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vacantes_empresas_empresas">
+          <End Role="empresas" Type="Self.empresas" Multiplicity="0..1" />
+          <End Role="vacantes_empresas" Type="Self.vacantes_empresas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empresas">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="vacantes_empresas">
+              <PropertyRef Name="ID_EMPRESA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_invercionista_socio_proyectos">
+          <End Role="proyectos" Type="Self.proyectos" Multiplicity="0..1" />
+          <End Role="invercionista_socio" Type="Self.invercionista_socio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proyectos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="invercionista_socio">
+              <PropertyRef Name="ID_proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_invercionista_socio_usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="0..1" />
+          <End Role="invercionista_socio" Type="Self.invercionista_socio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="invercionista_socio">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ofertantes_proyectos">
+          <End Role="proyectos" Type="Self.proyectos" Multiplicity="0..1" />
+          <End Role="ofertantes" Type="Self.ofertantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proyectos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ofertantes">
+              <PropertyRef Name="ID_PROYECTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ofertantes_usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="0..1" />
+          <End Role="ofertantes" Type="Self.ofertantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ofertantes">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_proyectos_usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="0..1" />
+          <End Role="proyectos" Type="Self.proyectos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="proyectos">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="db_a86807_dominicannetEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="empresas" EntityType="Self.empresas" />
+          <EntitySet Name="invercionista_socio" EntityType="Self.invercionista_socio" />
+          <EntitySet Name="ofertantes" EntityType="Self.ofertantes" />
+          <EntitySet Name="proyectos" EntityType="Self.proyectos" />
+          <EntitySet Name="REPORTE" EntityType="Self.REPORTE" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="usuarios" EntityType="Self.usuarios" />
+          <EntitySet Name="vacantes_empresas" EntityType="Self.vacantes_empresas" />
+          <AssociationSet Name="FK_empresas_usuarios" Association="Self.FK_empresas_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="empresas" EntitySet="empresas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vacantes_empresas_empresas" Association="Self.FK_vacantes_empresas_empresas">
+            <End Role="empresas" EntitySet="empresas" />
+            <End Role="vacantes_empresas" EntitySet="vacantes_empresas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_invercionista_socio_proyectos" Association="Self.FK_invercionista_socio_proyectos">
+            <End Role="proyectos" EntitySet="proyectos" />
+            <End Role="invercionista_socio" EntitySet="invercionista_socio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_invercionista_socio_usuarios" Association="Self.FK_invercionista_socio_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="invercionista_socio" EntitySet="invercionista_socio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ofertantes_proyectos" Association="Self.FK_ofertantes_proyectos">
+            <End Role="proyectos" EntitySet="proyectos" />
+            <End Role="ofertantes" EntitySet="ofertantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ofertantes_usuarios" Association="Self.FK_ofertantes_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="ofertantes" EntitySet="ofertantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_proyectos_usuarios" Association="Self.FK_proyectos_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="proyectos" EntitySet="proyectos" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(db_a86807_dominicannetModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(db_a86807_dominicannetModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="db_a86807_dominicannetModelStoreContainer" CdmEntityContainer="db_a86807_dominicannetEntities">
+          <EntitySetMapping Name="empresas">
+            <EntityTypeMapping TypeName="db_a86807_dominicannetModel.empresas">
+              <MappingFragment StoreEntitySet="empresas">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="nombre_empresa" ColumnName="nombre_empresa" />
+                <ScalarProperty Name="descricion" ColumnName="descricion" />
+                <ScalarProperty Name="modelo_negocio" ColumnName="modelo_negocio" />
+                <ScalarProperty Name="invercion" ColumnName="invercion" />
+                <ScalarProperty Name="porcentaje_participacion" ColumnName="porcentaje_participacion" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="invercionista_socio">
+            <EntityTypeMapping TypeName="db_a86807_dominicannetModel.invercionista_socio">
+              <MappingFragment StoreEntitySet="invercionista_socio">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="porsentaje" ColumnName="porsentaje" />
+                <ScalarProperty Name="inversion" ColumnName="inversion" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="ID_proyecto" ColumnName="ID_proyecto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ofertantes">
+            <EntityTypeMapping TypeName="db_a86807_dominicannetModel.ofertantes">
+              <MappingFragment StoreEntitySet="ofertantes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="porcentaje" ColumnName="porcentaje" />
+                <ScalarProperty Name="inversion" ColumnName="inversion" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="ID_PROYECTO" ColumnName="ID_PROYECTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="proyectos">
+            <EntityTypeMapping TypeName="db_a86807_dominicannetModel.proyectos">
+              <MappingFragment StoreEntitySet="proyectos">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRE_PROYECTO" ColumnName="NOMBRE_PROYECTO" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="modelo_negocio" ColumnName="modelo_negocio" />
+                <ScalarProperty Name="invercion_necesaria" ColumnName="invercion_necesaria" />
+                <ScalarProperty Name="porcentaje_ofertado" ColumnName="porcentaje_ofertado" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="link_video" ColumnName="link_video" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REPORTE">
+            <EntityTypeMapping TypeName="db_a86807_dominicannetModel.REPORTE">
+              <MappingFragment StoreEntitySet="REPORTE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_ususario" ColumnName="ID_ususario" />
+                <ScalarProperty Name="ID_empresa" ColumnName="ID_empresa" />
+                <ScalarProperty Name="ID_PROYECTO" ColumnName="ID_PROYECTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="db_a86807_dominicannetModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuarios">
+            <EntityTypeMapping TypeName="db_a86807_dominicannetModel.usuarios">
+              <MappingFragment StoreEntitySet="usuarios">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="contraseña" ColumnName="contraseña" />
+                <ScalarProperty Name="rol" ColumnName="rol" />
+                <ScalarProperty Name="actividad" ColumnName="actividad" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="pagina_web" ColumnName="pagina_web" />
+                <ScalarProperty Name="instagram" ColumnName="instagram" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vacantes_empresas">
+            <EntityTypeMapping TypeName="db_a86807_dominicannetModel.vacantes_empresas">
+              <MappingFragment StoreEntitySet="vacantes_empresas">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="vacante" ColumnName="vacante" />
+                <ScalarProperty Name="descrpicion" ColumnName="descrpicion" />
+                <ScalarProperty Name="puesto" ColumnName="puesto" />
+                <ScalarProperty Name="horario" ColumnName="horario" />
+                <ScalarProperty Name="salario" ColumnName="salario" />
+                <ScalarProperty Name="ID_EMPRESA" ColumnName="ID_EMPRESA" />
+                <ScalarProperty Name="Contacto" ColumnName="Contacto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="db_a86807_dominicannetModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="db_a86807_dominicannetModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="db_a86807_dominicannetModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="db_a86807_dominicannetModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="db_a86807_dominicannetModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="db_a86807_dominicannetModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="db_a86807_dominicannetModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="db_a86807_dominicannetModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="db_a86807_dominicannetModel.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
