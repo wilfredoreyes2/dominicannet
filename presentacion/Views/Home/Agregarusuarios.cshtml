@@ -1,0 +1,104 @@
+﻿@model Capa_entidades.usuarios
+
+@{
+    ViewBag.Title = "Agregarusuarios";
+}
+
+@*<h2>Agregarproyecto</h2>*@
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div style="margin-top: 50px;" class="d-flex flex-column align-items-center">
+        <div style="width: 400px;" class="d-flex flex-column align-items-center shadow-lg p-3 mb-5 bg-body rounded">
+            <h4>NUEVO usuarios</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group d-flex flex-column align-items-center">
+                <div style="margin: 5px;" class="">
+                    @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group d-flex flex-column align-items-center">
+                <div style="margin: 5px;" class="">
+                    @Html.LabelFor(model => model.correo, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.correo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.correo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group d-flex flex-column align-items-center">
+                <div style="margin: 5px;" class="">
+                    @Html.LabelFor(model => model.contraseña, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.contraseña, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.contraseña, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group d-flex flex-column align-items-center">
+                <div style="margin: 5px;" class="">
+                    @Html.LabelFor(model => model.rol, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.rol, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.rol, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group d-flex flex-column align-items-center">
+                <div style="margin: 5px;" class="">
+                    @Html.LabelFor(model => model.actividad, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.actividad, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.actividad, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group d-flex flex-column align-items-center">
+                <div style="margin: 5px;" class="">
+                    @Html.LabelFor(model => model.telefono, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.telefono, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.telefono, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group d-flex flex-column align-items-center">
+                <div style="margin: 5px;" class="">
+                    @Html.LabelFor(model => model.pagina_web, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.pagina_web, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.pagina_web, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group d-flex flex-column align-items-center">
+                <div style="margin: 5px;" class="">
+                    @Html.LabelFor(model => model.instagram, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.instagram, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.instagram, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div style="margin: 5px;" class="">
+                    @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label" })
+                    <select style="width: 180px;" class="form-control" id="Estado" name="Estado">
+                        <option value="1">Habilitado</option>
+                        <option value="2">Deshabilitado</option>
+                    </select>
+                    @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group d-flex flex-column align-items-center">
+                <input style="width: 180px; margin: 5px;" type="submit" value="AGREGAR" class="btn btn-primary" />
+            </div>
+            <div>
+                <span style="width: 207px;">@Html.ActionLink("REGRESAR", "DashBoard", "Home", new { @class = "btn btn-secondary" })</span>
+            </div>
+        </div>
+
+    </div>
+}
+

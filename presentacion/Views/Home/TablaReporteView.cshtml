@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Capa_entidades.REPORTE>
+
+@{
+    ViewBag.Title = "TablaReporteView";
+    Layout = "~/Views/Shared/_SearchBarTable.cshtml";
+}
+
+<div style="padding: 100px;" class="d-flex flex-column align-items-center">
+    <h2>Productos reportados</h2>
+    <hr />
+
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>
+                <span>Num. Reporte</span>
+            </th>
+            <th>
+                <span>ID_ususario</span>
+            </th>
+            <th>
+                <span>Cantidad de Reportes</span>
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID_ususario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @if (item.ID >= 3)
+                    {
+
+                        @Html.ActionLink("DESHABILITAR usuario", "Deshabilitarusuarios", new { id = item.ID_ususario }, new { @class = "btn btn-warning" })
+                    }
+
+                    @Html.ActionLink("ELIMINAR REPORTES", "EliminarReportes", new { id = item.ID }, new { @class = "btn btn-danger" })
+                </td>
+
+
+            </tr>
+        }
+
+    </table>
+</div>
+

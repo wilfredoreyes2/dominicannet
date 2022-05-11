@@ -22,6 +22,7 @@ namespace Capa_entidades
         public Nullable<int> salario { get; set; }
         public Nullable<int> ID_EMPRESA { get; set; }
         public string Contacto { get; set; }
+        public Nullable<int> Estado { get; set; }
     
         public virtual empresas empresas { get; set; }
     }

@@ -33,9 +33,9 @@ namespace Capa_datos
         public virtual DbSet<ofertantes> ofertantes { get; set; }
         public virtual DbSet<proyectos> proyectos { get; set; }
         public virtual DbSet<REPORTE> REPORTE { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<usuarios> usuarios { get; set; }
         public virtual DbSet<vacantes_empresas> vacantes_empresas { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="db_a86807_dominicannetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="db_a86807_dominicannetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="empresas">
           <Key>
             <PropertyRef Name="ID" />
@@ -16,6 +16,7 @@
           <Property Name="invercion" Type="int" />
           <Property Name="porcentaje_participacion" Type="int" />
           <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="int" />
         </EntityType>
         <EntityType Name="invercionista_socio">
           <Key>
@@ -43,7 +44,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NOMBRE_PROYECTO" Type="varchar" MaxLength="100" />
           <Property Name="descripcion" Type="varchar" MaxLength="500" />
           <Property Name="modelo_negocio" Type="varchar" MaxLength="200" />
@@ -52,6 +53,7 @@
           <Property Name="id_usuario" Type="int" />
           <Property Name="link_video" Type="varchar" MaxLength="150" />
           <Property Name="imagen" Type="image" />
+          <Property Name="Estado" Type="int" />
         </EntityType>
         <EntityType Name="REPORTE">
           <Key>
@@ -77,11 +79,12 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
           <Property Name="correo" Type="varchar" MaxLength="50" />
           <Property Name="contraseña" Type="varchar" MaxLength="50" />
           <Property Name="rol" Type="int" />
           <Property Name="actividad" Type="int" />
-          <Property Name="estado" Type="int" />
+          <Property Name="Estado" Type="int" />
           <Property Name="telefono" Type="int" />
           <Property Name="pagina_web" Type="int" />
           <Property Name="instagram" Type="int" />
@@ -94,10 +97,11 @@
           <Property Name="vacante" Type="varchar" MaxLength="250" />
           <Property Name="descrpicion" Type="varchar" MaxLength="500" />
           <Property Name="puesto" Type="varchar" MaxLength="50" />
-          <Property Name="horario" Type="varchar" MaxLength="15" />
+          <Property Name="horario" Type="varchar" MaxLength="50" />
           <Property Name="salario" Type="int" />
           <Property Name="ID_EMPRESA" Type="int" />
           <Property Name="Contacto" Type="varchar" MaxLength="100" />
+          <Property Name="Estado" Type="int" />
         </EntityType>
         <Association Name="FK_empresas_usuarios">
           <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
@@ -252,8 +256,7 @@
             <End Role="vacantes_empresas" EntitySet="vacantes_empresas" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="db_a86807_dominicannetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -270,6 +273,7 @@
           <Property Name="id_usuario" Type="Int32" Nullable="false" />
           <NavigationProperty Name="usuarios" Relationship="Self.FK_empresas_usuarios" FromRole="empresas" ToRole="usuarios" />
           <NavigationProperty Name="vacantes_empresas" Relationship="Self.FK_vacantes_empresas_empresas" FromRole="empresas" ToRole="vacantes_empresas" />
+          <Property Name="Estado" Type="Int32" />
         </EntityType>
         <EntityType Name="invercionista_socio">
           <Key>
@@ -313,6 +317,7 @@
           <NavigationProperty Name="invercionista_socio" Relationship="Self.FK_invercionista_socio_proyectos" FromRole="proyectos" ToRole="invercionista_socio" />
           <NavigationProperty Name="ofertantes" Relationship="Self.FK_ofertantes_proyectos" FromRole="proyectos" ToRole="ofertantes" />
           <NavigationProperty Name="usuarios" Relationship="Self.FK_proyectos_usuarios" FromRole="proyectos" ToRole="usuarios" />
+          <Property Name="Estado" Type="Int32" />
         </EntityType>
         <EntityType Name="REPORTE">
           <Key>
@@ -323,16 +328,6 @@
           <Property Name="ID_empresa" Type="Int32" />
           <Property Name="ID_PROYECTO" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="usuarios">
           <Key>
             <PropertyRef Name="ID" />
@@ -342,7 +337,6 @@
           <Property Name="contraseña" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="rol" Type="Int32" />
           <Property Name="actividad" Type="Int32" />
-          <Property Name="estado" Type="Int32" />
           <Property Name="telefono" Type="Int32" />
           <Property Name="pagina_web" Type="Int32" />
           <Property Name="instagram" Type="Int32" />
@@ -350,6 +344,8 @@
           <NavigationProperty Name="invercionista_socio" Relationship="Self.FK_invercionista_socio_usuarios" FromRole="usuarios" ToRole="invercionista_socio" />
           <NavigationProperty Name="ofertantes" Relationship="Self.FK_ofertantes_usuarios" FromRole="usuarios" ToRole="ofertantes" />
           <NavigationProperty Name="proyectos" Relationship="Self.FK_proyectos_usuarios" FromRole="usuarios" ToRole="proyectos" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Int32" />
         </EntityType>
         <EntityType Name="vacantes_empresas">
           <Key>
@@ -359,11 +355,12 @@
           <Property Name="vacante" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="descrpicion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="puesto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="horario" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="horario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="salario" Type="Int32" />
           <Property Name="ID_EMPRESA" Type="Int32" />
           <Property Name="Contacto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="empresas" Relationship="Self.FK_vacantes_empresas_empresas" FromRole="vacantes_empresas" ToRole="empresas" />
+          <Property Name="Estado" Type="Int32" />
         </EntityType>
         <Association Name="FK_empresas_usuarios">
           <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
@@ -455,7 +452,6 @@
           <EntitySet Name="ofertantes" EntityType="Self.ofertantes" />
           <EntitySet Name="proyectos" EntityType="Self.proyectos" />
           <EntitySet Name="REPORTE" EntityType="Self.REPORTE" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="usuarios" EntityType="Self.usuarios" />
           <EntitySet Name="vacantes_empresas" EntityType="Self.vacantes_empresas" />
           <AssociationSet Name="FK_empresas_usuarios" Association="Self.FK_empresas_usuarios">
@@ -516,6 +512,7 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="sysdiagrams" EntityType="db_a86807_dominicannetModel.sysdiagrams" />
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -528,6 +525,16 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -537,6 +544,7 @@
           <EntitySetMapping Name="empresas">
             <EntityTypeMapping TypeName="db_a86807_dominicannetModel.empresas">
               <MappingFragment StoreEntitySet="empresas">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="nombre_empresa" ColumnName="nombre_empresa" />
                 <ScalarProperty Name="descricion" ColumnName="descricion" />
@@ -574,6 +582,7 @@
           <EntitySetMapping Name="proyectos">
             <EntityTypeMapping TypeName="db_a86807_dominicannetModel.proyectos">
               <MappingFragment StoreEntitySet="proyectos">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="NOMBRE_PROYECTO" ColumnName="NOMBRE_PROYECTO" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
@@ -596,26 +605,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="db_a86807_dominicannetModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="usuarios">
             <EntityTypeMapping TypeName="db_a86807_dominicannetModel.usuarios">
               <MappingFragment StoreEntitySet="usuarios">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="correo" ColumnName="correo" />
                 <ScalarProperty Name="contraseña" ColumnName="contraseña" />
                 <ScalarProperty Name="rol" ColumnName="rol" />
                 <ScalarProperty Name="actividad" ColumnName="actividad" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
                 <ScalarProperty Name="telefono" ColumnName="telefono" />
                 <ScalarProperty Name="pagina_web" ColumnName="pagina_web" />
                 <ScalarProperty Name="instagram" ColumnName="instagram" />
@@ -625,6 +624,7 @@
           <EntitySetMapping Name="vacantes_empresas">
             <EntityTypeMapping TypeName="db_a86807_dominicannetModel.vacantes_empresas">
               <MappingFragment StoreEntitySet="vacantes_empresas">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="vacante" ColumnName="vacante" />
                 <ScalarProperty Name="descrpicion" ColumnName="descrpicion" />
@@ -660,6 +660,17 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="db_a86807_dominicannetModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="db_a86807_dominicannetModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="db_a86807_dominicannetModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

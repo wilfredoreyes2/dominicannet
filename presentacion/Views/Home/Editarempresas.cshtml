@@ -1,0 +1,88 @@
+﻿@model Capa_entidades.empresas
+
+@{
+    ViewBag.Title = "Agregarempresas";
+}
+
+@*<h2>Agregarproyecto</h2>*@
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div style="margin-top: 50px;" class="d-flex flex-column align-items-center">
+        <div style="width: 400px;" class="d-flex flex-column align-items-center shadow-lg p-3 mb-5 bg-body rounded">
+            <h4>NUEVO empresas</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group d-flex flex-column align-items-center">
+                <div style="margin: 5px;" class="">
+                    @Html.LabelFor(model => model.nombre_empresa, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.nombre_empresa, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.nombre_empresa, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group d-flex flex-column align-items-center">
+                <div style="margin: 5px;" class="">
+                    @Html.LabelFor(model => model.descricion, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.descricion, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.descricion, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group d-flex flex-column align-items-center">
+                <div style="margin: 5px;" class="">
+                    @Html.LabelFor(model => model.modelo_negocio, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.modelo_negocio, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.modelo_negocio, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group d-flex flex-column align-items-center">
+                <div style="margin: 5px;" class="">
+                    @Html.LabelFor(model => model.invercion, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.invercion, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.invercion, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group d-flex flex-column align-items-center">
+                <div style="margin: 5px;" class="">
+                    @Html.LabelFor(model => model.porcentaje_participacion, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.porcentaje_participacion, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.porcentaje_participacion, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group d-flex flex-column align-items-center">
+                <div style="margin: 5px;" class="">
+                    @Html.LabelFor(model => model.id_usuario, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.id_usuario, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.id_usuario, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div style="margin: 5px;" class="">
+                    @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label" })
+                    <select style="width: 180px;" class="form-control" id="Estado" name="Estado">
+                        <option value="1">Habilitado</option>
+                        <option value="2">Deshabilitado</option>
+                    </select>
+                    @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group d-flex flex-column align-items-center">
+                <input style="width: 180px; margin: 5px;" type="submit" value="AGREGAR" class="btn btn-primary" />
+            </div>
+            <div>
+                <span style="width: 207px;">@Html.ActionLink("REGRESAR", "DashBoard", "Home", new { @class = "btn btn-secondary" })</span>
+            </div>
+        </div>
+
+    </div>
+}
+

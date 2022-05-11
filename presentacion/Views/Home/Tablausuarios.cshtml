@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Capa_entidades.usuarios>
+
+@{
+    ViewBag.Title = "Tablausuarios";
+}
+
+<div style="padding: 100px;" class="d-flex flex-column align-items-center">
+    <h2>Tabla usuarios</h2>
+
+    <div style="width: 100%;" class="d-flex flex-row justify-content-end">
+        <div style="margin: 5px;">@Html.ActionLink("AÑADIR", "Agregarusuarios", "Home", new { @class = "btn btn-primary" })</div>
+    </div>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.correo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.contraseña)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rol)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.actividad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pagina_web)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.instagram)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.nombre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.correo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.contraseña)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.rol)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.actividad)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.telefono)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.pagina_web)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.instagram)
+    </td>
+    <td>
+        @{
+            if (item.Estado != 1)
+            {
+                <span>Deshabilitado</span>
+            }
+            else
+            {
+                <span>Habilitado</span>
+            }
+        }
+    </td>
+
+    <td>
+        @Html.ActionLink("EDITAR", "Editarusuarios", new { id = item.ID }, new { @class = "btn btn-warning" }) |
+        @Html.ActionLink("DESHABILITAR", "Deshabilitarusuarios", new { id = item.ID }, new { @class = "btn btn-danger" })
+    </td>
+
+</tr>
+    }
+
+</table>
+

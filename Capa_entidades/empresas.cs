@@ -27,6 +27,7 @@ namespace Capa_entidades
         public Nullable<int> invercion { get; set; }
         public Nullable<int> porcentaje_participacion { get; set; }
         public int id_usuario { get; set; }
+        public Nullable<int> Estado { get; set; }
     
         public virtual usuarios usuarios { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

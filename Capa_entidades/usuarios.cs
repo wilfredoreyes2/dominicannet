@@ -28,10 +28,11 @@ namespace Capa_entidades
         public string contraseña { get; set; }
         public Nullable<int> rol { get; set; }
         public Nullable<int> actividad { get; set; }
-        public Nullable<int> estado { get; set; }
         public Nullable<int> telefono { get; set; }
         public Nullable<int> pagina_web { get; set; }
         public Nullable<int> instagram { get; set; }
+        public string nombre { get; set; }
+        public Nullable<int> Estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<empresas> empresas { get; set; }

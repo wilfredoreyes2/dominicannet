@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Capa_entidades.proyectos>
+
+@{
+    ViewBag.Title = "Tablaproyectos";
+}
+
+<div style="padding: 100px;" class="d-flex flex-column align-items-center">
+    <h2>Tabla proyectos</h2>
+
+    <div style="width: 100%;" class="d-flex flex-row justify-content-end">
+        <div style="margin: 5px;">@Html.ActionLink("AÑADIR", "Agregarproyecto", "Home", new { @class = "btn btn-primary" })</div>
+    </div>
+    </div>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NOMBRE_PROYECTO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.modelo_negocio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.invercion_necesaria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.porcentaje_ofertado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.id_usuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.link_video)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMBRE_PROYECTO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.modelo_negocio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.invercion_necesaria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.porcentaje_ofertado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.id_usuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.link_video)
+        </td>
+        <td>
+            @{
+                if (item.Estado != 1)
+                {
+                    <span>Deshabilitado</span>
+                }
+                else
+                {
+                    <span>Habilitado</span>
+                }
+            }
+        </td>
+        
+        <td>
+            @Html.ActionLink("EDITAR", "Editarproyecto", new { id = item.ID }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("DESHABILITAR", "Deshabilitarproyecto", new { id = item.ID }, new { @class = "btn btn-danger" })
+        </td>
+        
+    </tr>
+        }
+
+    </table>

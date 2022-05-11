@@ -30,6 +30,7 @@ namespace Capa_entidades
         public Nullable<int> id_usuario { get; set; }
         public string link_video { get; set; }
         public byte[] imagen { get; set; }
+        public Nullable<int> Estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<invercionista_socio> invercionista_socio { get; set; }

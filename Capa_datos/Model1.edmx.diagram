@@ -4,13 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6c43788bbc844cc69c80cb01802e297f" Name="Diagram1">
+      <Diagram DiagramId="6c43788bbc844cc69c80cb01802e297f" Name="Diagram1" ZoomLevel="97">
         <EntityTypeShape EntityType="db_a86807_dominicannetModel.empresas" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="db_a86807_dominicannetModel.invercionista_socio" Width="1.5" PointX="5.25" PointY="11.125" IsExpanded="true" />
         <EntityTypeShape EntityType="db_a86807_dominicannetModel.ofertantes" Width="1.5" PointX="8.25" PointY="11.125" IsExpanded="true" />
         <EntityTypeShape EntityType="db_a86807_dominicannetModel.proyectos" Width="1.5" PointX="3" PointY="14.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="db_a86807_dominicannetModel.REPORTE" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="db_a86807_dominicannetModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a86807_dominicannetModel.REPORTE" Width="1.5" PointX="3.125" PointY="2.25" IsExpanded="true" />
         <EntityTypeShape EntityType="db_a86807_dominicannetModel.usuarios" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
         <EntityTypeShape EntityType="db_a86807_dominicannetModel.vacantes_empresas" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
         <AssociationConnector Association="db_a86807_dominicannetModel.FK_empresas_usuarios" ManuallyRouted="false" />
@@ -20,6 +19,7 @@
         <AssociationConnector Association="db_a86807_dominicannetModel.FK_ofertantes_proyectos" ManuallyRouted="false" />
         <AssociationConnector Association="db_a86807_dominicannetModel.FK_ofertantes_usuarios" ManuallyRouted="false" />
         <AssociationConnector Association="db_a86807_dominicannetModel.FK_proyectos_usuarios" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="db_a86807_dominicannetModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
