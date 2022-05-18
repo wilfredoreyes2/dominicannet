@@ -105,14 +105,14 @@ namespace presentacion.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult PDetalles(int ID_proyecto = 3)
+        public ActionResult PDetalles(int ID)
         {
             // USUARIO ESTATICO
             //int IDUser = (int)Session["id_usuario"];
 
             //Session para conocer el id del producto al reportar
 
-            Session["Id_Producto"] = ID_proyecto;
+            Session["ID_proyecto"] = ID;
 
             //// CONDICIONAL DE LA VARIABLE PRODUCTO, CONDICION QUE ASIGNA EL VALOR DE LA VARIABLE SESSION.
             //if (ID_proyecto <= 0)
@@ -140,7 +140,7 @@ namespace presentacion.Controllers
 
 
             // VARIABLE QUE ME RETORNA EL PRODUCTO SEGUN EL ID.
-            var detalles = Neg.detalles_proyecto(ID_proyecto );
+            var detalles = Neg.detalles_proyecto(ID);
 
             return View(detalles);
         }
@@ -149,6 +149,34 @@ namespace presentacion.Controllers
         {
 
             return View(Neg.Listavacantes());
+        }
+        public ActionResult ofertante(ofertantes of)
+        {
+
+            of.ID_USUARIO = (int?)Session["id_usuario"];
+            of.ID_PROYECTO = (int?)Session["ID_proyecto"];
+
+            Neg.Insertarofertantes(of);
+
+
+            return View();
+        }
+
+        public ActionResult Listadoproyectos()
+        {
+            int ID = (int)Session["id_usuario"];
+            return View(Neg.Listadoproyectos(ID));
+        }
+
+        public ActionResult Details(int ID)
+        {
+            
+            return View(Neg.Listadoofertantes(ID));
+        }
+        public ActionResult contacto(int ID)
+        {
+
+            return View(Neg.infousuarios(ID));
         }
 
 

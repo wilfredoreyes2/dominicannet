@@ -1,0 +1,560 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <!DOCTYPE html>
+    <!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
+    <html lang="en" dir="ltr">
+
+    <head>
+        <meta charset="UTF-8">
+        <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
+        <link rel="stylesheet" href="style.css">
+        <!-- Boxicons CDN Link -->
+        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+    <body>
+        <div class="sidebar">
+            <div class="logo-details">
+                <i class='bx bxl-c-plus-plus icon'></i>
+                <div class="logo_name">RD Marketing</div>
+                <i class='bx bx-menu' id="btn"></i>
+            </div>
+            <ul class="nav-list">
+                <li>
+                    <i class='bx bx-search'></i>
+                    <input type="text" placeholder="Buscar...">
+                    <span class="tooltip">Buscar</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-grid-alt'></i>
+                        <span class="links_name">Dashboard</span>
+                    </a>
+                    <span class="tooltip">Dashboard</span>
+                </li>
+               
+                <div class="text-center">
+                    <i class='bx bx-user'></i>
+
+                    @Html.ActionLink("login", "login", "login")
+                </div>
+
+                   
+
+
+
+
+
+<li>
+                    <a href="#">
+                        <i class='bx bx-chat'></i>
+                        <span class="links_name">Mensajes</span>
+                    </a>
+                    <span class="tooltip">Mensajes</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-pie-chart-alt-2'></i>
+                        <span class="links_name">Analisis</span>
+                    </a>
+                    <span class="tooltip">Analitica</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-folder'></i>
+                        <span class="links_name">Archivos</span>
+                    </a>
+                    <span class="tooltip">Archivos</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-cart-alt'></i>
+                        <span class="links_name">Ordenar</span>
+                    </a>
+                    <span class="tooltip">Ordenar</span>
+                </li>
+                <li>
+                    <a href="SALVADO.html">
+                        <i class='bx bx-heart'></i>
+                        <span class="links_name">Salvar</span>
+                    </a>
+                    <span class="tooltip">Salvar</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-cog'></i>
+                        <span class="links_name">Ajustes</span>
+                    </a>
+                    <span class="tooltip">Setting</span>
+                </li>
+                <li>
+                    <a href="https://www.youtube.com/channel/UCIlYKRbAg_jS52_N65ZIWww">
+                        <i class='bx bxl-youtube bx-flashing' style='color:#f90e12'></i>
+                        <span class="links_name">Youtube>
+
+                    </a>
+                    <span class="tooltip">Youtube</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bxl-facebook-circle bx-spin' style='color:#260dbd'></i>
+                        <span class="links_name">Facebook</span>
+                    </a>
+                    <span class="tooltip">Facebook</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bxl-instagram bx-flashing' style='color:#bf189a'></i>
+                        <span class="links_name">Instagram</span>
+                    </a>
+                    <span class="tooltip">Instagram</span>
+                </li>
+
+
+
+
+
+
+                <li class="profile">
+                    <div class="profile-details">
+                        <!--<img src="Logo limpio.jpg" alt="">-->
+                        <div class="RD Marketing">
+                            <div class="name">RD Marketing</div>
+                            <div class="job">Avalado por Cedtespro</div>
+                        </div>
+                    </div>
+                    <i class='bx bx-log-out' id="log_out"></i>
+                </li>
+            </ul>
+        </div>
+
+        <div class="text">RD</div>
+        </section>
+        <script>
+            let sidebar = document.querySelector(".sidebar");
+            let closeBtn = document.querySelector("#btn");
+            let searchBtn = document.querySelector(".bx-search");
+
+            closeBtn.addEventListener("click", () => {
+                sidebar.classList.toggle("open");
+                menuBtnChange(); //calling the function(optional)
+            });
+
+            searchBtn.addEventListener("click", () => { // Sidebar open when you click on the search iocn
+                sidebar.classList.toggle("open");
+                menuBtnChange(); //calling the function(optional)
+            });
+
+            // following are the code to change sidebar button(optional)
+            function menuBtnChange() {
+                if (sidebar.classList.contains("open")) {
+                    closeBtn.classList.replace("bx-menu", "bx-menu-alt-right"); //replacing the iocns class
+                } else {
+                    closeBtn.classList.replace("bx-menu-alt-right", "bx-menu"); //replacing the iocns class
+                }
+            }
+        </script>
+    </body>
+
+</html>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="css/estilos_iniciar_sesion.css">
+<script type="text/javascript" src="js/validar_iniciar_sesion_cliente.js"></script>
+</head>
+
+</section>
+
+</form>
+
+</div>
+
+</Section>
+<section>
+
+
+    </div>
+    </div>
+
+
+
+
+
+
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Dominicana Marketing</title>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet" />
+        <!-- https://cedtespro-00/ -->
+        @*<link href="css/bootstrap.min.css" rel="stylesheet" />*@
+        <link rel="stylesheet" href="bootstrap.min.css">
+        <link href="dominicannet/presentacion/Content/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="dominicannet/presentacion/Content/css/all.min.css" rel="stylesheet" />
+        <link href="css/Dominicana Marketing.css" rel="stylesheet" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title> Stu Nicholls | CSSplay | Dominicana Marketing</title>
+        <style type="text/css">
+        </style>
+    </head>
+
+    <body>
+
+        <body style="background-color:rgb(255, 255, 255);">
+        </body>
+        <section>
+            <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b> Dominicana Marketing</h2></b>
+
+            <div class="wrapper">
+                <div class="slider" id="slider">
+                    <ul class="slides">
+                        <li class="slide" id="slide1">
+                            <a href="#">
+                                <p class="caption"></p>
+                                <img src="LOGO DOMINICA.jpg" alt="">
+                            </a>
+                        </li>
+                        <li class="slide" id="slide2">
+                            <a href="#">
+                                <p class="caption"></p>
+                                <img src="dominicanaaaaaaa.jpg" alt="photo 2">
+                            </a>
+
+                        </li>
+                        <li class="slide">
+                            <a href="#">
+                                <p class="caption"></p>
+                                <img src="LOGO DOMINICA.jpg" alt="photo 1">
+                            </a>
+                        </li>
+                        <li class="slide">
+                            <a href="#">
+                                <p class="caption"></p>
+                                <img src="dominicanaaaaaaa.jpg" alt="photo 1">
+                            </a>
+                        </li>
+                        <li class="slide">
+                            <a href="#">
+                                <p class="caption"></p>
+                                <img src="LOGO DOMINICA.jpg" alt="photo 1">
+                            </a>
+                        </li>
+                        <li class="slide">
+                            <a href="#">
+                                <p class="caption"></p>
+                                <img src="dominicanaaaaaaa.jpg" alt="photo 1">
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+            <title> menu deplegable</title>
+            <style type="text/css">
+            </style>
+            <ul class="nav">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <li>
+                    <a href="">
+                        <b>
+                            QUIENES SOMOS
+                    </a></b>
+                    <ul>
+                        <li><a href="filososofia.html" class="button">Filosofia</a></li>
+                        <li><a href="mision.html" class="button">Mision</a></li>
+                        <li><a href="vision.html" class="button">Visión</a></li>
+                        <li><a href="valores.html" class="button">Valores y Principios</a></li>
+                        <li><a href="Organigrama.html" class="button">Organigrama</a></li>
+                        <li><a href="Legal.html" class="button">Legales</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href=""><b>EMPRENDEDOR</a></b>
+                    <ul>
+                        <li><a href="plan de negocios.html" class="button">Planes de negocio</a></li>
+                        <li><a href="Oferta de Servicios.html" class="button">Ofertas de servicio</a></li>
+                        <li><a href="Oferta de Producto.html" class="button">Oferta de producto</a></li>
+                    </ul>
+
+
+                <li>
+                    <a href=""><b>EDUCACION FINANCIERA</a></b>
+                    <ul>
+                        <li><a href="Cursos.html" class="button">Cursos</a></li>
+                        <li><a href="Charlas .html" class="button">Charlas</a></li>
+                        <li><a href="Libros.html" class="button">Libros</a></li>
+                        <li><a href="Revistas.html" class="button">Revistas</a></li>
+                    </ul>
+
+
+
+
+
+                <li><a href=""><b>HOME</a></b>
+
+
+                <li>
+                    <a href=""><b>FINANCIAMIENTO</a></b>
+                    <ul>
+                        <li><a href="Banco.html" class="button">Banco</a></li>
+                        <li><a href="Financiera.html" class="button">Financiera</a></li>
+                        <li><a href="Cooperativa.html" class="button">Cooperativa</a></li>
+                    </ul>
+
+
+                <li>
+                    <a href=""><b>PLAN DE NEGOCIOS</a></b>
+                    <ul>
+                        <li><a href="Tipo de negocios.html" class="button">Tipo de negocios</a></li>
+                        <li><a href="Sociedad.html" class="button">Sociedad</a></li>
+                        <li><a href="Monto.html" class="button">Monto</a></li>
+                    </ul>
+
+
+                <li>
+                    <a href=""><b>EMPRESAS</a></b>
+                    <ul>
+                        <li><a href="Producto.html" class="button">Productos</a></li>
+                        <li><a href="Servicios.html" class="button">Servicios</a></li>
+                        <li><a href="Empleos.html" class="button">Empleos</a></li>
+                        <li><a href="Pasantias.html" class="button">Pasantias</a></li>
+                    </ul>
+
+                </li>
+                <br>
+        </section>
+        </div>
+        </figure>
+
+        <body>
+            <Br>
+            </Br>
+
+            <Figure>
+                <div style="width: 500px; float:left;">
+                    <section>
+                        <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Plan de Negocios</h2>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<video width="420" height="340" autoplay controls>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <source src="yt1s.io-Emprende  es hora !!.mp4" type="video/mp4">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <source src="yt1s.io-Emprende  es hora !!.mp4" type="video/ogg">
+                            Tu navegador no es compatible con videos HTML5
+                        </video>
+
+                </div>
+            </Figure>
+</section>
+<div>
+    <figure>
+        <section>
+            <div style="width: 500px; float:right;">
+                <section>
+                    <h4>Emprendedores por provincias y carreras tecnicas</h4>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="http://www.maphill.com/dominican-republic/3d-maps/flag-map/satellite-outside/" title="Flag 3D Map of Dominican Republic, satellite outside">
+                        <img src="http://maps.maphill.com/dominican-republic/3d-maps/flag-map/satellite-outside/free-fancy-flag-3d-map-of-dominican-republic-satellite-outside.jpg" width="423" height="372" alt="Flag 3D Map of Dominican Republic, satellite outside" />
+                    </a><br /><a href="http://www.maphill.com/dominican-republic/3d-maps/flag-map/satellite-outside/" title="Flag 3D Map of Dominican Republic, satellite outside">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Flag 3D Map of Dominican Republic, satellite outside</a>
+                </section>
+            </div>
+    </figure>
+    <figure>
+        <section>
+</div>
+
+
+<div style="width: 500px; float:left;">
+    <img src="logo dominiocana marketin negro.jpg" alt="Image" class="img-fluid">
+    <figcaption>
+        <a href="https://www.instagram.com/cedtespro/" class="tm-social-link">
+            <i class="fab fa-instagram fa-15x tm-social-icon tm-social-icon-2"></i>
+        </a>
+        <a href="https://m.facebook.com/profile.php?id=100065906462161" class="tm-social-link">
+            <i class="fab fa-facebook fa-15x tm-social-icon tm-social-icon-2"></i>
+        </a>
+        <a href="https://www.youtube.com/channel/UCIlYKRbAg_jS52_N65ZIWww">
+            <i class="fab fa-youtube fa-15x tm-social-icon tm-social-icon-2"></i>
+        </a>
+        </figure>
+        </section>
+</div>
+            </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="meta">
+    <span class="author"></span>
+    <span class="date">.</span>
+
+</div>
+            </div>
+            </div>
+<figure>
+    <div style="width: 800px; float:right;">
+
+        <img src="WhatsApp Image 2022-03-04 at 8.26.49 PM.jpeg" alt="Image" class="img-fluid mb-5">
+</figure>
+            </div>
+<br>
+<br>
+<section>
+    <figure>
+        <div style="width: 500px; float:center;">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="media news-item widget-news">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <video width="340" height="176" autoplay controls>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <source src="yt1s.com - Formaliza tu propia empresa parte 1_360p.mp4" type="video/mp4">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <source src="yt1s.com - Formaliza tu propia empresa parte 1_360p.mp4" type="video/ogg">
+                    Tu navegador no es compatible con videos HTML5
+                    <div class="cat">
+                        <span><a href="https://themeinthebox.com/demo/themedroid/category/people/">People</a></span>/<span><a href="https://themeinthebox.com/demo/themedroid/category/sports/">Sports</a></span>
+                    </div>
+                    <h2 class="title"><a href="https://themeinthebox.com/demo/themedroid/lorem-ipsum-dolor-sit-amet-2/">Lorem ipsum dolor sit amet 1</a></h2>
+                    <div class="meta">
+                        <span class="author">By Theme Droid</span>
+                        <span class="date">15 August 2017</span>
+                    </div>
+            </div>
+        </div>
+
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="media news-item widget-news">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<video width="340" height="176" autoplay controls>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <source src="yt1s.com - Formaliza tu  empresa parte 2.mp4" type="video/mp4">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <source src="yt1s.com - Formaliza tu  empresa parte 2.mp4" type="video/ogg">
+                Tu navegador no es compatible con videos HTML5
+                <div class="cat">
+                    <span><a href="https://themeinthebox.com/demo/themedroid/category/sports/">Sports</a></span>
+                </div>
+                <h2 class="title"><a href="https://themeinthebox.com/demo/themedroid/lorem-ipsum-dolor-sit-amet-3/">Lorem ipsum dolor sit amet 2</a></h2>
+                <div class="meta">
+                    <span class="author">By Theme Droid</span>
+                    <span class="date">15 August 2017</span>
+                </div>
+        </div>
+        </div>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="media news-item widget-news">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<video width="340" height="176" autoplay controls>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <source src="video suplidpr estado.mp4" type="video/mp4">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <source src="video suplidpr estado.mp4" type="video/ogg">
+                Tu navegador no es compatible con videos HTML5
+                <div class="cat">
+                    <span><a href="https://themeinthebox.com/demo/themedroid/category/people/">People</a></span>/<span><a href="https://themeinthebox.com/demo/themedroid/category/sports/">Sports</a></span>
+                </div>
+                <h2 class="title"><a href="https://themeinthebox.com/demo/themedroid/lorem-ipsum-dolor-sit-amet/">Lorem ipsum dolor sit amet</a></h2>
+                <div class="meta">
+                    <span class="author">By Theme Droid</span>
+                    <span class="date">15 August 2017</span>
+                </div>
+        </div>
+        </div>
+        <section>
+            <figure>
+                <figcaption>
+                    <div style="width: 500px; float:right;">
+                        <img src="bombillo.jpg" alt="Image" class="img-fluid mb-5">
+            </figure>
+            </figcaption>
+
+        </section>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+
+        </body>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        </div>
+        <div id="parallax-3" class="parallax-window parallax-window-2" data-parallax="scroll"
+             data-image-src="Letrero Cedtespro.jpg">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="tm-overlay p-5 mx-auto text-center">
+                            <p class="mb-5 text-white">
+                                Here is a text paragraph to join our team. This is a parallax image
+                                background section. Phasellus interdum lobortis ultrices. Cras nulla nulla, fermentum vel ligula in.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <footer class="container-fluid">
+            <div class="row">
+                <p class="col-lg-9 col-md-8 mb-5 mb-md-0">
+                    DIMINICANA MARKETING &copy; 2022 <span class="tm-text-primary">Dominicana Marketing </span>
+                </p>
+                <div class="col-lg-3 col-md-4 text-right">
+                    <a rel="nofollow" target="_blank" href="https://fb.com/templatemo" class="tm-social-link">
+                        <i class="fab fa-facebook fa-2x tm-social-icon"></i>
+                    </a>
+                    <a href="https://twitter.com" class="tm-social-link">
+                        <i class="fab fa-instagram fa-2x tm-social-icon"></i>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCIlYKRbAg_jS52_N65ZIWww" class="tm-social-link">
+                        <i class="fab fa-youtube fa-2x tm-social-icon"></i>
+                    </a>
+                </div>
+            </div>
+            <p class="form-link">¿Aún no tienes una cuenta? <a href="registrar.php">Regístrate</a></p>
+            <hr>
+        </footer>
+
+        <script src="js/jquery-3.4.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/parallax.min.js"></script> <!-- https://pixelcog.github.io/parallax.js/ -->
+        <script src="js/tooplate-script.js"></script>
+        <script>
+    $(document).ready(function () {
+        $('#parallax-1').parallax({ imageSrc: 'img/biz-oriented-header.jpg' });
+        $('#parallax-3').parallax({ imageSrc: 'img/biz-oriented-footer-3.jpg' });
+    });
+
+        </script>
+        </body>
+</html>
+

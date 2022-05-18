@@ -313,5 +313,49 @@ namespace Capa_datos
 
             return lista;
         }
+
+        public void Añadirofertantes(ofertantes Pro)
+        {
+            db.ofertantes.Add(Pro);
+            db.SaveChanges();
+        }
+        public List<proyectos> Listadoproyectos(int ID)
+        {
+
+
+            var datos = (from d in db.proyectos
+                         where (d.id_usuario == ID)
+                         select d).ToList();
+
+            return datos;
+
+
+        }
+        public List<ofertantes> Listadoofertantes(int ID)
+        {
+
+
+            var datos = (from d in db.ofertantes
+                         where (d.ID_PROYECTO == ID)
+                         select d).ToList();
+
+            return datos;
+
+
+        }
+
+
+        public List<usuarios> infousuarios(int ID)
+        {
+
+
+            var datos = (from d in db.usuarios
+                         where (d.ID == ID)
+                         select d).ToList();
+
+            return datos;
+
+
+        }
     }
 }

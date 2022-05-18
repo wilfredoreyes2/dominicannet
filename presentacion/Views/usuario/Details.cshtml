@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Capa_entidades.ofertantes>
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+
+<table class="table">
+    <tr>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.porcentaje)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.inversion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_PROYECTO)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.porcentaje)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.inversion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_PROYECTO)
+        </td>
+        <td>
+           
+            @Html.ActionLink("CONTACTO", "contacto", new { id=item.ID_USUARIO }) |
+            
+        </td>
+    </tr>
+}
+
+</table>

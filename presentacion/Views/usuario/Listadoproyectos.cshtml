@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Capa_entidades.proyectos>
+
+@{
+    ViewBag.Title = "Listadoproyectos";
+}
+
+<h2>Listadoproyectos</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBRE_PROYECTO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.modelo_negocio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.invercion_necesaria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.porcentaje_ofertado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.link_video)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMBRE_PROYECTO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.modelo_negocio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.invercion_necesaria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.porcentaje_ofertado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.link_video)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+        <td>
+        
+            @Html.ActionLink("VER OFERTANTES", "Details", new { id=item.ID }) |
+           
+        </td>
+    </tr>
+}
+
+</table>

@@ -208,7 +208,24 @@ namespace Capa_negocio
             return Dt.Listavacantes();
         }
 
+        public void Insertarofertantes(ofertantes pro)
+        {
+            Dt.Añadirofertantes(pro);
+        }
 
+        public List<proyectos> Listadoproyectos(int ID)
+        {
+            return Dt.Listadoproyectos(ID);
+        }
+
+        public List<ofertantes> Listadoofertantes(int ID)
+        {
+            return Dt.Listadoofertantes(ID);
+        }
+        public List<usuarios> infousuarios(int ID)
+        {
+            return Dt.infousuarios(ID);
+        }
 
     }
 }
